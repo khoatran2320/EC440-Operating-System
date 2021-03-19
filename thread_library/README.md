@@ -1,0 +1,3 @@
+This is a user-space threading library that recreated the three primary thread functions from pthreads: pthread_create, pthread_exit, and pthread_self.
+
+The library implements a doubly, circular linked list to keep track of all the TCBs. It uses a 50ms preemptive round-robin scheduler to schedule all the threads. When pthread_create is first called, the state of the main thread is saved by a setjmp procedure. During this step, the alarm is set for the scheduler. In subsequent pthread_create calls, the procedure will set up the TCB for the new thread. This includes setting up the stack, manipulate the environment to call start_routine immediately, and set the return address so that the thread will call pthread_exit after returning from start_routine. 
