@@ -67,11 +67,6 @@ volatile static int num_curr_threads = 0;
 
 static void schedule(int signal)
 {
-	// printf("calling thead: %ld\n", pthread_self());
-	// if(num_curr_threads < 2){
-	// 	return;
-	// }
-
 	//save the current thread's environment
 	if(!setjmp(curr->env)){
 		//first time 
@@ -215,7 +210,6 @@ void pthread_exit(void *value_ptr)
 {
 	curr->t_status = TS_EXITED;
 	num_curr_threads--;
-	// printf("\nnumber of threads: %d, thread ID: 0x%lx\n", num_curr_threads, thread_id_counter);
 	if(num_curr_threads > 0){
 		schedule(SIGALRM);
 	}
