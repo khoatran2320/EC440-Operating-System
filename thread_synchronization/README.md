@@ -1,5 +1,5 @@
 # User-Space Threading Library
-This is a user-space threading library that recreated the three primary thread functions from pthreads: 
+This is a user-space threading library that recreated the primary thread functions from pthreads: 
 - pthread_create 
 - pthread_exit
 - pthread_self
